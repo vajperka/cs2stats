@@ -4,3 +4,6 @@ Nahraj obsah archivu do kořene GitHub repozitáře. Vercel: Other, output publi
 V6: Premier ruční import výsledku a ratingu (lokální úložiště podle FACEIT ID); žádné automatické Valve napojení. FACEIT ELO graf používá pouze dostupné hodnoty z API, jinak aktuální ELO. Náhledy pěti map jsou výřezy schváleného konceptu, nikoli oficiální screenshoty. Radar zobrazuje dostupné metriky, ostatní zůstávají prázdné. 
 
 V7: Skutečné ELO se ukládá při otevření profilu do localStorage. Historické hodnoty před prvním měřením nejsou garantovány.
+
+## V8 – WOK ELO
+Nastav WOK_API_KEY ve Vercelu, ponech FACEIT_API_KEY. Posledních 20 zápasů se páruje podle match_id. Chybějící hodnoty se neodhadují. Cache 5 minut není trvalá a limit WOK platí i pro jeho vlastní cache.
