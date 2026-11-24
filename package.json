@@ -1,1 +1,1 @@
-{"name":"cs2stats","version":"14.0.0","private":true,"dependencies":{"@neondatabase/serverless":"^0.10.4"}}
+{"name":"cs2stats","version":"16.0.0","private":true,"dependencies":{"@neondatabase/serverless":"^0.10.4"}}
