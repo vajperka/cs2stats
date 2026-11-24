@@ -1,5 +1,2 @@
-# CS2STATS
-Český prototyp. Nahraj obsah složky do GitHub repozitáře a importuj jej do Vercelu (Framework Preset: Other). Přidej serverovou proměnnou FACEIT_API_KEY v Settings → Environment Variables a znovu nasaď. Klíč nevkládej do GitHubu. Bez klíče funguje demo. Premier, Steam přihlášení, živá historie a klipy nejsou implementovány. Pro lokální běh s API použij Vercel CLI: npx vercel dev. Samotný frontend lze zobrazit přes lokální HTTP server. 
-
-## Vercel
-Framework Preset: Other. Output Directory: public. Build Command: leave empty. API functions remain in api/.
+# CS2STATS v3
+Nahraj obsah archivu do kořene GitHub repozitáře. Vercel: Other, Output Directory public, bez build command. V Settings > Environment Variables nastav FACEIT_API_KEY (serverový klíč z FACEIT developer portálu), potom Redeploy. Klíč nikdy nedávej do veřejného JS. Vyhledávání používá FACEIT nickname. Premier, Steam login a klipy zatím nejsou implementovány. Živá data vyžadují platný klíč; chybějící statistiky jsou označeny. API volání nebyla ověřena proti živému FACEIT účtu.
