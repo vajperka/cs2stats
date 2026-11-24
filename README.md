@@ -7,3 +7,5 @@ V7: Skutečné ELO se ukládá při otevření profilu do localStorage. Historic
 
 ## V8 – WOK ELO
 Nastav WOK_API_KEY ve Vercelu, ponech FACEIT_API_KEY. Posledních 20 zápasů se páruje podle match_id. Chybějící hodnoty se neodhadují. Cache 5 minut není trvalá a limit WOK platí i pro jeho vlastní cache.
+
+V10: Neon dashboard; FACEIT CDN level icons with numeric fallback. External icon URLs not verified. Existing API unchanged.
