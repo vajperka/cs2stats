@@ -9,3 +9,6 @@ V7: Skutečné ELO se ukládá při otevření profilu do localStorage. Historic
 Nastav WOK_API_KEY ve Vercelu, ponech FACEIT_API_KEY. Posledních 20 zápasů se páruje podle match_id. Chybějící hodnoty se neodhadují. Cache 5 minut není trvalá a limit WOK platí i pro jeho vlastní cache.
 
 V10: Neon dashboard; FACEIT CDN level icons with numeric fallback. External icon URLs not verified. Existing API unchanged.
+
+## V11 — Steam Match Sharing
+WOK dokumentace neobsahuje Premier historii. Nové tlačítko Import ze Steamu načítá až 10 dalších kódů přes oficiální Steam GetNextMatchSharingCode. Nastav STEAM_API_KEY (https://steamcommunity.com/dev/apikey). Autorizační kód se neukládá; match kódy zůstávají lokálně. Kódy samy neobsahují skóre, režim ani rating; automatická analýza dem a Steam login nejsou implementovány. Ruční Premier import zůstává. Živé API nebylo testováno.
