@@ -28,3 +28,6 @@ Optional server-side `LEETIFY_API_KEY` from https://leetify.com/app/developer . 
 
 ## V15
 Dashboard CSS, local illustrated map thumbnails (not game screenshots), accessible reduced motion, Premier credit outside rating, local FACEIT-style fallback. No database migration.
+
+## V17
+Map assets: Valve game files via https://github.com/MurkyYT/cs2-map-icons . Run npm run maps:sync before deployment to cache PNGs locally. If unavailable the UI tries repository URLs. Assets remain property of Valve; review usage rights.
