@@ -25,3 +25,6 @@ Spusť worker/migrate-v13.sql v Neon SQL Editoru. Nahraj projekt na GitHub a red
 
 ## V14 – Leetify
 Optional server-side `LEETIFY_API_KEY` from https://leetify.com/app/developer . Premier rating is fetched by FACEIT-linked SteamID64. History only includes matchmaking entries with rank_type 11 and positive rating. No synthetic ratings. Private or unavailable profiles may have no data. Existing database schema unchanged. Official attribution logo still needs to be added according to https://leetify.com/blog/leetify-api-developer-guidelines/ before public release.
+
+## V15
+Dashboard CSS, local illustrated map thumbnails (not game screenshots), accessible reduced motion, Premier credit outside rating, local FACEIT-style fallback. No database migration.
