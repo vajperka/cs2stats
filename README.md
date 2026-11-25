@@ -43,3 +43,6 @@ FACEIT scoreboard-summary integration, player ID join, match-wide single-map rat
 
 ## V21
 Supports camelCase and snake_case scoreboard fields. If server receives 403, open the JSON link in your browser and paste the response into the match detail. Import is session-memory only, not shared or persisted; no credentials needed. Server-side 403 remains unresolved.
+
+## V22
+Saved FACEIT scoreboard fallback for match 1-a7c4186e-7572-4f8a-8a3f-a013766add6d only. Other matches still require live access or manual import.
