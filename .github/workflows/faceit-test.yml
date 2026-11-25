@@ -1,0 +1,34 @@
+name: FACEIT scoreboard connectivity test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Test public scoreboard endpoint
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          match = '1-58727e4b-436c-48af-9efd-d2729230c4e3'
+          url = f'https://www.faceit.com/api/statistics/v1/cs2/matches/{match}/scoreboard-summary?statsType=2'
+          result = dict(id=match, httpStatus=None, players=0, ratings=0, mvp=False, success=False)
+          try:
+              with urllib.request.urlopen(url, timeout=25) as response:
+                  result['httpStatus'] = response.status
+                  cs2 = json.load(response)['payload']['cs2']
+                  players = [p for t in cs2['teams'] for p in t['players']]
+                  result['players'] = len(players)
+                  result['ratings'] = sum(isinstance(p.get('stats', {}).get('faceitRating', p.get('stats', {}).get('faceit_rating')), (int, float)) for p in players)
+                  result['mvp'] = bool(cs2.get('mvpPlayerId') or cs2.get('mvp_player_id'))
+                  result['success'] = result['players'] == 10 and result['ratings'] == 10 and result['mvp']
+          except urllib.error.HTTPError as e:
+              result['httpStatus'] = e.code
+          except Exception as e:
+              result['error'] = type(e).__name__
+          print(json.dumps(result))
+          raise SystemExit(0 if result['success'] else 1)
+          PY
