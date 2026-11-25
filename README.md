@@ -64,3 +64,6 @@ Po nasazení otevřete `/api/auth/faceit/start`, potvrďte přístup a zkontrolu
 
 ## V29 – anonymous scoreboard diagnostic
 Based on V27, no local worker required for FACEIT rating. `/api/scoreboard-test` checks the newly supplied match without OAuth or cookies. HTTP 403 means server access remains unavailable. No new environment variables. Utility is not present in this summary. No persistent cache added in this diagnostic release.
+
+## V32
+Cinematic landing and profile redesign. Public nickname lookup; no account registration or login. Landing preview numbers are illustrative. Existing player and match APIs are unchanged. Artwork is cropped from the approved concept; no new external service is required. Original FACEIT rating remains subject to API availability.
