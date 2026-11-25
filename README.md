@@ -55,3 +55,6 @@ Radar používá skutečné dostupné statistiky z posledních zápasů. Chyběj
 
 ## V25
 MVP is read from the actual scoreboard MVP player ID, not inferred from kills. No browser extension is required. If FACEIT returns 403, official rating and MVP remain unavailable. The radar substitutes explicitly labeled available metrics for missing axes. Live server access is not verified.
+
+## V26 ELO
+Automatic bounded refresh while profile is visible (up to five attempts); missing ELO is not estimated. Live WOK availability not tested.
