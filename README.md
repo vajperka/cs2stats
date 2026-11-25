@@ -67,3 +67,5 @@ Based on V27, no local worker required for FACEIT rating. `/api/scoreboard-test`
 
 ## V32
 Cinematic landing and profile redesign. Public nickname lookup; no account registration or login. Landing preview numbers are illustrative. Existing player and match APIs are unchanged. Artwork is cropped from the approved concept; no new external service is required. Original FACEIT rating remains subject to API availability.
+
+V34: redesigned player profile, full width slate dashboard. Landing and APIs unchanged. Browser navigation blocked in test environment.

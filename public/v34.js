@@ -1,0 +1,1 @@
+(()=>{const previous=render;render=function(){previous();const title=document.querySelector('.profile-kicker span:first-child');title.textContent='PLAYER DATABASE / '+String(player.name||'CS2').toUpperCase();};})();
