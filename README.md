@@ -34,3 +34,6 @@ Map assets: Valve game files via https://github.com/MurkyYT/cs2-map-icons . Run 
 
 ## V18
 Detail zápasu: řazení podle ratingu pouze pokud jej API poskytne všem hráčům, jinak výchozí abecední pořadí s upozorněním. Přidáno volitelné řazení a odkaz na FACEIT.
+
+## V19
+Redesigned match detail. Real FACEIT ratings only; missing ratings use clearly labeled kills ordering. Avatars use official match metadata when available.
