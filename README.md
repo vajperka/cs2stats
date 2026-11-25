@@ -52,3 +52,6 @@ Automatický serverový pokus a následný přímý anonymní požadavek z prohl
 
 ## V24
 Radar používá skutečné dostupné statistiky z posledních zápasů. Chybějící údaje zůstávají prázdné. Volitelný Chrome/Edge doplněk v `extension/` načítá scoreboard při návštěvě oficiální stránky FACEIT a ukládá jej lokálně; následné otevření detailu na CS2STATS jej načte automaticky. Instalace: chrome://extensions, režim vývojáře, načíst rozbalené, vybrat extension. Podporované domény jsou v manifest.json a background.js; pro vlastní doménu uprav obě. Doplněk neposílá cookies ani tokeny. Neřeší serverovou 403 pro všechny návštěvníky. 
+
+## V25
+MVP is read from the actual scoreboard MVP player ID, not inferred from kills. No browser extension is required. If FACEIT returns 403, official rating and MVP remain unavailable. The radar substitutes explicitly labeled available metrics for missing axes. Live server access is not verified.
