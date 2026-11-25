@@ -46,3 +46,6 @@ Supports camelCase and snake_case scoreboard fields. If server receives 403, ope
 
 ## V22
 Saved FACEIT scoreboard fallback for match 1-a7c4186e-7572-4f8a-8a3f-a013766add6d only. Other matches still require live access or manual import.
+
+## V23
+Automatický serverový pokus a následný přímý anonymní požadavek z prohlížeče. Pokud FACEIT nepovolí CORS nebo vrátí 403, rating zůstane nedostupný. Bez proxy či obcházení ochrany. Ruční formulář odstraněn. WOK cache 15 sekund, profil bez CDN cache. Nulové ELO a nepotvrzené nulové změny jsou zobrazeny jako nedostupné; skutečná nula z detailního scoreboardu je zachována. Po otevření detailu se dostupná změna promítne do historie. Živé API nebylo ověřeno.
