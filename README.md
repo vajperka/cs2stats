@@ -40,3 +40,6 @@ Redesigned match detail. Real FACEIT ratings only; missing ratings use clearly l
 
 ## V20
 FACEIT scoreboard-summary integration, player ID join, match-wide single-map ratings. Public endpoint availability on Vercel not verified. No new keys.
+
+## V21
+Supports camelCase and snake_case scoreboard fields. If server receives 403, open the JSON link in your browser and paste the response into the match detail. Import is session-memory only, not shared or persisted; no credentials needed. Server-side 403 remains unresolved.
