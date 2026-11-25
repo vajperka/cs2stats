@@ -58,3 +58,6 @@ MVP is read from the actual scoreboard MVP player ID, not inferred from kills. N
 
 ## V26 ELO
 Automatic bounded refresh while profile is visible (up to five attempts); missing ELO is not estimated. Live WOK availability not tested.
+
+## V27 – diagnostika FACEIT OAuth
+Po nasazení otevřete `/api/auth/faceit/start`, potvrďte přístup a zkontrolujte JSON výsledku. Test používá PKCE a state, token neukládá ani nevypisuje. Volitelný FACEIT_CLIENT_SECRET nastavte pouze pokud jej FACEIT pro klienta vydal. Test nezaručuje přístup k interním statistikám a zatím nemění veřejnou synchronizaci ani databázi.
