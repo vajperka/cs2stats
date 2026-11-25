@@ -31,3 +31,6 @@ Dashboard CSS, local illustrated map thumbnails (not game screenshots), accessib
 
 ## V17
 Map assets: Valve game files via https://github.com/MurkyYT/cs2-map-icons . Run npm run maps:sync before deployment to cache PNGs locally. If unavailable the UI tries repository URLs. Assets remain property of Valve; review usage rights.
+
+## V18
+Detail zápasu: řazení podle ratingu pouze pokud jej API poskytne všem hráčům, jinak výchozí abecední pořadí s upozorněním. Přidáno volitelné řazení a odkaz na FACEIT.
