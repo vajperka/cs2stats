@@ -49,3 +49,6 @@ Saved FACEIT scoreboard fallback for match 1-a7c4186e-7572-4f8a-8a3f-a013766add6
 
 ## V23
 Automatický serverový pokus a následný přímý anonymní požadavek z prohlížeče. Pokud FACEIT nepovolí CORS nebo vrátí 403, rating zůstane nedostupný. Bez proxy či obcházení ochrany. Ruční formulář odstraněn. WOK cache 15 sekund, profil bez CDN cache. Nulové ELO a nepotvrzené nulové změny jsou zobrazeny jako nedostupné; skutečná nula z detailního scoreboardu je zachována. Po otevření detailu se dostupná změna promítne do historie. Živé API nebylo ověřeno.
+
+## V24
+Radar používá skutečné dostupné statistiky z posledních zápasů. Chybějící údaje zůstávají prázdné. Volitelný Chrome/Edge doplněk v `extension/` načítá scoreboard při návštěvě oficiální stránky FACEIT a ukládá jej lokálně; následné otevření detailu na CS2STATS jej načte automaticky. Instalace: chrome://extensions, režim vývojáře, načíst rozbalené, vybrat extension. Podporované domény jsou v manifest.json a background.js; pro vlastní doménu uprav obě. Doplněk neposílá cookies ani tokeny. Neřeší serverovou 403 pro všechny návštěvníky. 
