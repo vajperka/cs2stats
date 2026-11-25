@@ -37,3 +37,6 @@ Detail zápasu: řazení podle ratingu pouze pokud jej API poskytne všem hráč
 
 ## V19
 Redesigned match detail. Real FACEIT ratings only; missing ratings use clearly labeled kills ordering. Avatars use official match metadata when available.
+
+## V20
+FACEIT scoreboard-summary integration, player ID join, match-wide single-map ratings. Public endpoint availability on Vercel not verified. No new keys.
