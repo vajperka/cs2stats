@@ -61,3 +61,6 @@ Automatic bounded refresh while profile is visible (up to five attempts); missin
 
 ## V27 – diagnostika FACEIT OAuth
 Po nasazení otevřete `/api/auth/faceit/start`, potvrďte přístup a zkontrolujte JSON výsledku. Test používá PKCE a state, token neukládá ani nevypisuje. Volitelný FACEIT_CLIENT_SECRET nastavte pouze pokud jej FACEIT pro klienta vydal. Test nezaručuje přístup k interním statistikám a zatím nemění veřejnou synchronizaci ani databázi.
+
+## V28 – experimentální FACEIT demo worker
+V Neon SQL Editor spusť `worker/faceit-schema.sql`. Na vlastním PC s Pythonem 3.11+ spusť `python -m pip install -r worker/requirements.txt`, nastav lokálně proměnné DATABASE_URL a FACEIT_API_KEY (nikdy je necommituj), poté `python worker/faceit_worker.py`. Worker musí běžet, aby zpracoval frontu. Otevření detailu zápasu na webu založí úlohu. Po zpracování otevři detail znovu. Vercel worker nespouští. Podporována jsou dostupná single-map dema s deseti hráči. Po pěti neúspěších se úloha zastaví. Rating je vlastní vážený výpočet K/R, ADR, A/R a přežití, nikoli FACEIT ani HLTV. MVP je nejvyšší vlastní rating. KAST, entry, clutch a utility zatím nejsou implementovány. Parser a živé demo nebyly v prostředí ověřeny.
