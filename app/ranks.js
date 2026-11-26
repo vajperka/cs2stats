@@ -1,0 +1,4 @@
+'use client';
+export const rankFor=(level,elo)=>Number(level)===10&&Number(elo)>=2500?Math.min(20,11+Math.floor((Number(elo)-2500)/250)):Math.max(1,Math.min(10,Number(level)||1));
+export function RankBadge({level,large=false}){return <img className={'rankbadge '+(large?'large':'')} src={'/ranks/'+level+'.svg'} alt={'FRAG INDEX rank '+level}/>}
+export function RankStrip({level,elo}){return <article className="rankstrip"><div className="rankcurrent"><RankBadge level={level} large/><div><small>FRAG//INDEX RANK</small><h2>{elo??'—'} ELO</h2><small>Úroveň {level} / 20</small></div></div><div className="ranktrack"><h3>Úrovně FRAG//INDEX <small>11–20 vlastní ranky · od 2500 ELO, po 250 ELO</small></h3><div className="ranklist">{Array.from({length:20},(_,i)=>i+1).map(n=><div key={n} className={n===level?'selectedrank':''} title={n>10?`${2500+(n-11)*250}+ ELO`:`FACEIT level ${n}`}><RankBadge level={n}/><small>{n}</small></div>)}</div></div></article>}
