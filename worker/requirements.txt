@@ -1,2 +1,0 @@
-demoparser2
-psycopg[binary]>=3.2,<4

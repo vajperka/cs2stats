@@ -1,1 +1,0 @@
-window.addEventListener('message',async e=>{if(e.source!==window||e.origin!==location.origin||e.data?.type!=='CS2STATS_GET')return;const {id,nonce}=e.data;try{const data=await chrome.runtime.sendMessage({type:'get',id});window.postMessage({type:'CS2STATS_RESULT',id,nonce,data},location.origin)}catch{}});
