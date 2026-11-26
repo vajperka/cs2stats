@@ -15,3 +15,6 @@ V8: Experimental read-only ELO diagnostics: /api/elo-probe?nick=vajperka . No hi
 
 ## V10
 Skóre z pohledu hráče, čas Europe/Prague, K/D/A, K/R, MVP, multikilly a barevné metriky. Historické ELO bez zdroje zůstává nedostupné; neoficiální endpointy v diagnostice vrátily 403.
+
+## V11
+Scoreboard využívá oficiální match stats a match details. ELO: interní endpoint vrací 403; přesné starší hodnoty nejsou dostupné. Pro průběžné sledování nastav CRON_SECRET ve Vercelu a autorizovaný plánovač GET /api/cron (Bearer CRON_SECRET), ideálně každou minutu, pokud tarif dovolí. Bez plánovače zůstává kontrola při otevřeném profilu. Pozorované změny nejsou ověřená historická data a při více zápasech mezi kontrolami se nerozpočítávají.
