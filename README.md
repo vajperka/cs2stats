@@ -18,3 +18,6 @@ Skóre z pohledu hráče, čas Europe/Prague, K/D/A, K/R, MVP, multikilly a bare
 
 ## V11
 Scoreboard využívá oficiální match stats a match details. ELO: interní endpoint vrací 403; přesné starší hodnoty nejsou dostupné. Pro průběžné sledování nastav CRON_SECRET ve Vercelu a autorizovaný plánovač GET /api/cron (Bearer CRON_SECRET), ideálně každou minutu, pokud tarif dovolí. Bez plánovače zůstává kontrola při otevřeném profilu. Pozorované změny nejsou ověřená historická data a při více zápasech mezi kontrolami se nerozpočítávají.
+
+## V12
+Set WOK_API_KEY in Vercel (same key as old CS2STATS). WOK history is joined by match ID; missing values remain unavailable. FACEIT scoreboard-summary is optional and may reject server requests. No database migration required. Live provider access not verified.
