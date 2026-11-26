@@ -1,0 +1,3 @@
+export function numeric(v){return v==null||v===''||!Number.isFinite(Number(v))?null:Number(v)}
+export function scoreFor(r){const own=numeric(r['Final Score']);const parts=String(r.Score??'').split(/\s*[/:–-]\s*/).map(numeric);if(parts.length!==2||parts.some(x=>x===null))return r.Score??'—';if(own!==null&&parts.includes(own))return `${own} : ${parts[0]===own?parts[1]:parts[0]}`;if(String(r.Result)==='1')return `${Math.max(...parts)} : ${Math.min(...parts)}`;if(String(r.Result)==='0')return `${Math.min(...parts)} : ${Math.max(...parts)}`;return parts.join(' : ')}
+export function tone(v,good,bad){const n=numeric(v);return n===null?'':n>=good?'perfGood':n<bad?'perfBad':''}

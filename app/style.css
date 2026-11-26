@@ -18,3 +18,5 @@
 .profileart::after{content:none;display:none;}
 .profilehero{background:none;}
 @media(max-width:650px){.profileart{height:460px;background-size:auto,auto,auto 100%;background-position:center,center,65% top;}}
+
+.matches .perfGood{color:#69e77e;font-weight:650}.matches .perfBad{color:#ff666d;font-weight:650}.matches table{min-width:1120px}.matches td,.matches th{white-space:nowrap}.matches tbody tr{transition:background .2s ease}.matches tbody tr:hover{background:rgba(255,55,65,.09)}
