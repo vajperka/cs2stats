@@ -36,3 +36,6 @@ Nastavte samostatný silný náhodný `LEAGUE_ADMIN_CODE` ve Vercelu (jiný než
 
 ## V19 Performance Lab
 Profile tab: custom rating, recent match records, map analysis, calendar (only confirmed match deltas), manual matchroom lookup and uncalibrated ELO estimate. Existing league unchanged. Discord delivery, background match archival, season Wrapped and automatic live detection are not included in this release. Live API requires deployment verification.
+
+## V21
+Interactive ELO chart with hover, touch and keyboard points. Missing per-match changes remain unknown.
