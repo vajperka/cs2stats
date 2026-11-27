@@ -42,3 +42,6 @@ Interactive ELO chart with hover, touch and keyboard points. Missing per-match c
 
 ## V23
 Map previews: Valve game assets via https://github.com/MurkyYT/cs2-map-icons (remote images; fallback to unnumbered thumbnail, then map icon, then neutral placeholder). Artwork belongs to Valve and respective creators.
+
+## V24
+Profile DNA, recent form, observed peak, next-level progress, daily league snapshots, season race, ELO comparison, ELO King and historical season winners. Daily snapshots begin at deployment; no historical interpolation. Other awards and match-level league analytics require persistent match ingestion. No new environment variables.
