@@ -50,3 +50,5 @@ V27: profile trophies derived from completed league seasons by FACEIT player ID;
 
 ## V29
 Redesigned landing only: responsive hero, existing operator artwork, feature cards, Friends League CTA, scoped animations.
+
+V31: Compact Match Room next to ELO History; responsive single column on smaller screens.
