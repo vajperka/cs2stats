@@ -27,3 +27,6 @@ Responsive rank grid without scrollbar; distinct motion presets for all FACEIT r
 
 ## V15
 Distinct CSS effects for every FACEIT rank; no API changes.
+
+## Friends League V16
+Public `/league` page. Set `LEAGUE_JOIN_CODE` to a private shared code in Vercel to allow adding members without accounts. Existing DATABASE_URL and FACEIT_API_KEY are used. Monthly seasons use UTC. Baseline is first successful observation in the month (or at joining); no retroactive history. Refresh on page visit and every two minutes while open; no background scheduler. Previous season scores remain in the database. No deletion UI. Maximum 30 members.
