@@ -21,3 +21,6 @@ Scoreboard využívá oficiální match stats a match details. ELO: interní end
 
 ## V12
 Set WOK_API_KEY in Vercel (same key as old CS2STATS). WOK history is joined by match ID; missing values remain unavailable. FACEIT scoreboard-summary is optional and may reject server requests. No database migration required. Live provider access not verified.
+
+## V14
+Responsive rank grid without scrollbar; distinct motion presets for all FACEIT ranks and Challenger.
