@@ -30,3 +30,6 @@ Distinct CSS effects for every FACEIT rank; no API changes.
 
 ## Friends League V16
 Public `/league` page. Set `LEAGUE_JOIN_CODE` to a private shared code in Vercel to allow adding members without accounts. Existing DATABASE_URL and FACEIT_API_KEY are used. Monthly seasons use UTC. Baseline is first successful observation in the month (or at joining); no retroactive history. Refresh on page visit and every two minutes while open; no background scheduler. Previous season scores remain in the database. No deletion UI. Maximum 30 members.
+
+## V17 – správa sezóny
+Nastavte samostatný silný náhodný `LEAGUE_ADMIN_CODE` ve Vercelu (jiný než LEAGUE_JOIN_CODE). V /league otevřete Administrace, vyberte konec v místním čase a uložte. Termín je uložen v nové tabulce frag_league_schedule; skóre zůstává pod původním ID. Ručně nastavená sezóna po konci zůstává zobrazena, automatická další sezóna se nezakládá. Výsledky se přestanou aktualizovat po konci; poslední zaznamenané ELO nemusí odpovídat přesně okamžiku konce. Ukončenou sezónu nelze prodloužit.
