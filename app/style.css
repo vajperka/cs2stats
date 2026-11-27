@@ -36,30 +36,56 @@
 .ranklist>.rankitem .rankrange{white-space:normal;overflow-wrap:normal;font-size:clamp(8px,1cqw,11px)!important}
 @container (max-width:680px){.ranklist{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}}
 @container (max-width:350px){.ranklist{grid-template-columns:repeat(4,minmax(0,1fr))}}
-/* Individual motion signatures, shared by profile and scoreboard badges. */
-.faceitfx .rankbadge{animation:var(--badge-motion,rank14Pulse) var(--motion-time,3s) ease-in-out infinite!important}
-.faceitfx .rank-orbit{animation:var(--orbit-motion,orbitSpin) var(--orbit-time,5s) linear infinite;opacity:var(--orbit-opacity,.65)}
-.faceitfx .rank-sparks{animation:var(--spark-motion,orbitSpin) var(--spark-time,7s) linear infinite;opacity:var(--spark-opacity,.5)}
-.faceitfx .rank-sheen{animation:metalSweep var(--shine-time,5s) infinite;opacity:var(--shine-opacity,.4)}
-.rank-motion-1{--badge-motion:rank14Pulse;--motion-time:4s;--orbit-opacity:.2;--spark-opacity:0;--shine-opacity:.15}
-.rank-motion-2{--badge-motion:rank14Float;--motion-time:3.4s;--orbit-time:7s;--spark-opacity:.2}
-.rank-motion-3{--badge-motion:rank14Beat;--motion-time:3s;--orbit-time:4s;--spark-motion:rank14Spark}
-.rank-motion-4{--badge-motion:rank14Tilt;--motion-time:4s;--orbit-motion:rank14Reverse;--orbit-time:6s}
-.rank-motion-5{--badge-motion:rank14Gold;--motion-time:3.5s;--shine-time:2.5s;--shine-opacity:.8}
-.rank-motion-6{--badge-motion:rank14Float;--motion-time:2.8s;--orbit-motion:rank14Pendulum;--spark-time:3s}
-.rank-motion-7{--badge-motion:rank14Beat;--motion-time:2.6s;--orbit-time:2.8s;--spark-motion:rank14Reverse;--spark-time:4s}
-.rank-motion-8{--badge-motion:rank14Heat;--motion-time:2.4s;--orbit-time:3s;--spark-motion:rank14Spark;--spark-time:2s}
-.rank-motion-9{--badge-motion:rank14Tilt;--motion-time:2.5s;--orbit-motion:rank14Reverse;--orbit-time:2s;--spark-time:2.7s}
-.rank-motion-10{--badge-motion:rank14Gold;--motion-time:2s;--orbit-time:1.8s;--spark-motion:rank14Reverse;--spark-time:2.4s;--shine-opacity:.8}
-.rank-motion-challenger{--badge-motion:rank14Crown;--motion-time:2.8s;--orbit-time:1.5s;--spark-motion:rank14Spark;--spark-time:1.8s;--shine-time:2s;--shine-opacity:.9}
-@keyframes rank14Pulse{50%{filter:drop-shadow(0 0 5px var(--rank-color))}}
-@keyframes rank14Float{50%{transform:translateY(-4%)}}
-@keyframes rank14Beat{0%,45%,65%,100%{transform:scale(1)}35%,55%{transform:scale(1.055)}}
-@keyframes rank14Tilt{25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
-@keyframes rank14Gold{50%{filter:brightness(1.25) drop-shadow(0 0 8px var(--rank-color));transform:scale(1.035)}}
-@keyframes rank14Heat{25%,75%{filter:brightness(1.12) drop-shadow(0 0 6px var(--rank-color))}50%{filter:brightness(1.3) drop-shadow(0 0 9px var(--rank-color))}}
-@keyframes rank14Crown{35%{transform:translateY(-5%) scale(1.06);filter:drop-shadow(0 0 10px var(--rank-color))}65%{transform:scale(1.025)}}
-@keyframes rank14Reverse{to{transform:rotate(-360deg)}}
-@keyframes rank14Pendulum{0%,100%{transform:rotate(-70deg)}50%{transform:rotate(70deg)}}
-@keyframes rank14Spark{0%{transform:rotate(0) scale(.92);opacity:.2}50%{opacity:.85}100%{transform:rotate(360deg) scale(1.12);opacity:.2}}
-@media(prefers-reduced-motion:reduce){.faceitfx,.faceitfx *,.faceitfx .rankbadge,.faceitfx:before{animation:none!important;transition:none!important}}
+/* V15 — independent visual effects, not just different animation speeds. */
+.faceitfx{position:relative;isolation:isolate;overflow:visible;--fx:var(--rank-color)}
+.faceitfx:before,.faceitfx:after{content:none!important}
+.faceitfx .rankbadge{position:relative;z-index:2;animation:none!important;filter:none!important;transform:none!important}
+.rank-energy,.rank-particles,.rank-flare{position:absolute;inset:0;pointer-events:none;display:block;border-radius:50%}
+.rank-energy{z-index:1}.rank-particles,.rank-flare{z-index:3}.rank-particles i{display:none;position:absolute;left:50%;top:50%;width:4%;aspect-ratio:1;border-radius:50%;background:var(--fx);box-shadow:0 0 7px var(--fx)}
+/* 1: silver radar sweep */
+.rank-motion-1 .rank-flare{background:conic-gradient(from 0deg,transparent 78%,#dce9ff55 98%,transparent);animation:v15Radar 5s linear infinite;clip-path:circle(46%)}
+/* 2: emerald sonar rings */
+.rank-motion-2 .rank-energy{border:1px solid var(--fx);animation:v15Sonar 2.8s ease-out infinite}
+/* 3: fireflies */
+.rank-motion-3 .rank-particles i{display:block;animation:v15Firefly 3s ease-in-out infinite;animation-delay:calc(var(--i)*-.5s)}
+/* 4: rotating golden compass */
+.rank-motion-4 .rank-energy{inset:-7%;background:conic-gradient(transparent 0 23%,var(--fx) 24% 25%,transparent 26% 48%,var(--fx) 49% 50%,transparent 51% 73%,var(--fx) 74% 75%,transparent 76% 98%,var(--fx) 99%);mask:radial-gradient(transparent 63%,#000 65% 73%,transparent 75%);animation:v15Compass 6s linear infinite}
+/* 5: metallic diagonal light */
+.rank-motion-5 .rank-flare{clip-path:circle(46%);background:linear-gradient(120deg,transparent 35%,#fff9 49%,transparent 63%);background-size:300% 100%;animation:v15Metal 3.5s ease-in-out infinite}
+/* 6: twin orbital comets */
+.rank-motion-6 .rank-energy{inset:-5%;background:conic-gradient(transparent 0 32%,#ffd84b 48%,transparent 50% 82%,#fff5b0 98%,transparent);mask:radial-gradient(transparent 62%,#000 65% 71%,transparent 74%);animation:v15Comet 2.7s linear infinite}
+/* 7: electric crown / expanding shockwave */
+.rank-motion-7 .rank-energy{inset:-4%;border:2px dashed #ffe473;box-shadow:0 0 12px #f7d037;animation:v15Shock 2.8s ease-out infinite}
+.rank-motion-7 .rank-flare{background:conic-gradient(transparent 10%,#fff7 12%,transparent 14% 55%,#fff9 57%,transparent 59%);mask:radial-gradient(transparent 56%,#000 60% 72%,transparent 75%);animation:v15Comet 4s linear infinite reverse}
+/* 8: rising embers */
+.rank-motion-8 .rank-particles i{display:block;background:#ffb56b;animation:v15Ember 2.2s ease-out infinite;animation-delay:calc(var(--i)*-.36s)}
+.rank-motion-8 .rank-energy{background:radial-gradient(ellipse at 50% 90%,#ff620080,transparent 70%);animation:v15Heat 2s ease-in-out infinite}
+/* 9: plasma vortex */
+.rank-motion-9 .rank-energy{inset:-9%;background:conic-gradient(transparent,#ff6500,transparent 35%,#ffca80,transparent 70%,#ff6500,transparent);mask:radial-gradient(transparent 58%,#000 62% 71%,transparent 74%);animation:v15Vortex 2s linear infinite}
+/* 10: crimson heartbeat */
+.rank-motion-10 .rank-energy{border:2px solid #ff1748;box-shadow:0 0 14px #ff1748;animation:v15Heartbeat 2.4s ease-out infinite}
+.rank-motion-10 .rank-flare{background:radial-gradient(circle,transparent 48%,#ff174866 68%,transparent 72%);animation:v15Heartbeat 2.4s .18s ease-out infinite}
+/* Challenger: royal satellite constellation */
+.rank-motion-challenger .rank-energy{inset:-10%;border:1px dashed #ff526d;box-shadow:0 0 12px #ff1748;animation:v15Royal 5s linear infinite}
+.rank-motion-challenger .rank-particles i{display:block;background:#fff0f3;animation:v15Satellite 4s linear infinite;animation-delay:calc(var(--i)*-.6667s)}
+.rank-motion-challenger .rank-flare{background:linear-gradient(115deg,transparent 40%,#ffafbd88 50%,transparent 60%);clip-path:circle(46%);background-size:300% 100%;animation:v15Metal 2.8s infinite}
+@keyframes v15Radar{to{transform:rotate(360deg)}}
+@keyframes v15Sonar{0%{transform:scale(.8);opacity:0}20%{opacity:.9}100%{transform:scale(1.25);opacity:0}}
+@keyframes v15Firefly{0%,100%{transform:rotate(calc(var(--i)*60deg)) translateX(12px);opacity:.15}50%{transform:rotate(calc(var(--i)*60deg + 35deg)) translateX(24px);opacity:1}}
+@keyframes v15Compass{to{transform:rotate(-360deg)}}
+@keyframes v15Metal{0%,15%{background-position:100% 0}65%,100%{background-position:0 0}}
+@keyframes v15Comet{to{transform:rotate(360deg)}}
+@keyframes v15Shock{0%{transform:scale(.88);opacity:0}20%{opacity:1}100%{transform:scale(1.25) rotate(35deg);opacity:0}}
+@keyframes v15Ember{0%{transform:translate(calc((var(--i) - 2.5)*6px),16px);opacity:0}25%{opacity:1}100%{transform:translate(calc((var(--i) - 2.5)*11px),-35px);opacity:0}}
+@keyframes v15Heat{50%{transform:scale(1.12);opacity:.5}}
+@keyframes v15Vortex{to{transform:rotate(360deg)}}
+@keyframes v15Heartbeat{0%,45%,100%{transform:scale(.92);opacity:.15}12%,30%{transform:scale(1.18);opacity:1}22%,40%{transform:scale(1.03);opacity:.4}}
+@keyframes v15Royal{to{transform:rotate(-360deg)}}
+@keyframes v15Satellite{from{transform:rotate(0deg) translateX(32px)}to{transform:rotate(360deg) translateX(32px)}}
+.scorePlayer .rank-particles{display:none}.rankfx-large .rank-particles{transform:scale(1.65)}
+@media(prefers-reduced-motion:reduce){.faceitfx,.faceitfx *{animation:none!important;transition:none!important}.rank-energy,.rank-particles,.rank-flare{display:none!important}}
+.rank-particles i{left:0;top:0;width:100%;height:100%;background:none!important;box-shadow:none!important;border-radius:50%;transform-origin:center}.rank-particles i:after{content:'';position:absolute;width:4%;aspect-ratio:1;left:48%;top:0;border-radius:50%;background:var(--fx);box-shadow:0 0 7px var(--fx)}
+@keyframes v15Firefly{0%,100%{transform:rotate(calc(var(--i)*60deg)) scale(.82);opacity:.15}50%{transform:rotate(calc(var(--i)*60deg + 35deg)) scale(1.12);opacity:1}}
+@keyframes v15Ember{0%{transform:translate(calc((var(--i) - 2.5)*8%),85%) scale(.7);opacity:0}25%{opacity:1}100%{transform:translate(calc((var(--i) - 2.5)*15%),-18%);opacity:0}}
+@keyframes v15Satellite{from{transform:rotate(0deg) scale(1.15)}to{transform:rotate(360deg) scale(1.15)}}
+.rankfx-large .rank-particles{transform:none}

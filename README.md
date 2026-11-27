@@ -24,3 +24,6 @@ Set WOK_API_KEY in Vercel (same key as old CS2STATS). WOK history is joined by m
 
 ## V14
 Responsive rank grid without scrollbar; distinct motion presets for all FACEIT ranks and Challenger.
+
+## V15
+Distinct CSS effects for every FACEIT rank; no API changes.
