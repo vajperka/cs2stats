@@ -1,4 +1,5 @@
 'use client';
+import {MapArt,mapLabel} from './map-art';
 import {useState} from 'react';
 export default function EloChart({points}){
  const [active,setActive]=useState(null);
@@ -14,6 +15,6 @@ export default function EloChart({points}){
  {selected&&<line x1={selected.x} x2={selected.x} y1="5" y2="150" stroke="#ffffff55" strokeDasharray="4 4"/>}
  {coords.map((p,i)=><g key={i} role="button" tabIndex={0} aria-label={`${p.elo} ELO, ${change(p)}`} onFocus={()=>setActive(i)} onBlur={()=>setActive(null)} onPointerEnter={()=>setActive(i)} onClick={()=>setActive(i)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setActive(i)}}} className="elo-chart-point"><circle cx={p.x} cy={p.y} r={active===i?8:4} fill={color(p)} stroke="#171419" strokeWidth="1.5"/><rect x={p.x-Math.min(12,338/Math.max(1,coords.length-1))} y={0} width={2*Math.min(12,338/Math.max(1,coords.length-1))} height={150} fill="transparent"/></g>)}
  </svg>
- {selected&&<div className="elo-chart-tooltip" style={{left:`${Math.max(15,Math.min(85,selected.x/7))}%`}} role="status"><small>{selected.map||'Záznam ELO'}</small><strong>{selected.elo} ELO</strong><b style={{color:color(selected)}}>{change(selected)}</b>{selected.observed&&<small>Pozorovaná hodnota</small>}</div>}
+ {selected&&<div className="elo-chart-tooltip" style={{left:`${Math.max(15,Math.min(85,selected.x/7))}%`}} role="status"><small>{selected.map?<><MapArt map={selected.map}/>{mapLabel(selected.map)}</>:'Záznam ELO'}</small><strong>{selected.elo} ELO</strong><b style={{color:color(selected)}}>{change(selected)}</b>{selected.observed&&<small>Pozorovaná hodnota</small>}</div>}
  </div>
 }
