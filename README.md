@@ -47,3 +47,6 @@ Map previews: Valve game assets via https://github.com/MurkyYT/cs2-map-icons (re
 Profile DNA, recent form, observed peak, next-level progress, daily league snapshots, season race, ELO comparison, ELO King and historical season winners. Daily snapshots begin at deployment; no historical interpolation. Other awards and match-level league analytics require persistent match ingestion. No new environment variables.
 
 V27: profile trophies derived from completed league seasons by FACEIT player ID; tied leaders share the award. No new environment variables.
+
+## V29
+Redesigned landing only: responsive hero, existing operator artwork, feature cards, Friends League CTA, scoped animations.
