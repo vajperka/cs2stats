@@ -33,3 +33,6 @@ Public `/league` page. Set `LEAGUE_JOIN_CODE` to a private shared code in Vercel
 
 ## V17 – správa sezóny
 Nastavte samostatný silný náhodný `LEAGUE_ADMIN_CODE` ve Vercelu (jiný než LEAGUE_JOIN_CODE). V /league otevřete Administrace, vyberte konec v místním čase a uložte. Termín je uložen v nové tabulce frag_league_schedule; skóre zůstává pod původním ID. Ručně nastavená sezóna po konci zůstává zobrazena, automatická další sezóna se nezakládá. Výsledky se přestanou aktualizovat po konci; poslední zaznamenané ELO nemusí odpovídat přesně okamžiku konce. Ukončenou sezónu nelze prodloužit.
+
+## V19 Performance Lab
+Profile tab: custom rating, recent match records, map analysis, calendar (only confirmed match deltas), manual matchroom lookup and uncalibrated ELO estimate. Existing league unchanged. Discord delivery, background match archival, season Wrapped and automatic live detection are not included in this release. Live API requires deployment verification.
