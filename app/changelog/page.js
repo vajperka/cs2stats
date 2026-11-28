@@ -1,6 +1,7 @@
 import {Header} from '../ui';
 export const metadata={title:'Changelog | FRAG//INDEX',description:'Historie aktualizací FRAG//INDEX'};
 const releases=[
+[73,"Match ELO · 28. 11. 2026",[["new","Vlastní ELO archiv v historii zápasů; pozorované hodnoty a rozdíly označené hvězdičkou."],["fix","Bez doplňování odhadovaných hodnot do starších zápasů."]]],
 [72,"Unified ELO · 28. 11. 2026",[["ui","Jeden graf historie WOK a skutečných snímků FACEIT, bez opakovaných stejných hodnot."],["new","Denní sběr až 30 evidovaných hráčů v dávkách; evidence i bez historie zápasů."],["fix","Webhook načítá aktuální historii; změny snímků nejsou vydávány za změnu jednoho zápasu."]]],
 [71,"FRAG ELO Archive · 28. 11. 2026",[["new","Vlastní graf pozorovaných hodnot FACEIT, počet záznamů a čas posledního sběru."],["new","Denní plán sběru a chráněný příjem webhooků po konfiguraci."]]],
 [70,"FRAG Data Engine · 28. 11. 2026",[["new","Samostatný archiv skutečných ELO snímků z FACEIT."],["ui","Chráněný sběr na pozadí bez spotřeby WOK tokenů; WOK historie zachována."]]],

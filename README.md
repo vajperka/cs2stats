@@ -109,3 +109,6 @@ Profile shows a separate observed FACEIT archive graph; WOK history stays separa
 
 ## V72
 Unified ELO graph, consecutive duplicate display suppression, observed changes labelled as snapshot differences. Daily Hobby cron uses existing CRON_SECRET and processes up to 30 registered players in batches, subject to time limit. Existing webhook subscriptions remain static; no automatic FACEIT subscription creation. No schema deletion. Existing WOK history retained. Old match-specific tracking remains unchanged; snapshot differences are not assigned to matches.
+
+## V73
+Match history displays observed FACEIT ELO and adjacent-match snapshot differences with an asterisk. WOK values retain priority. Missing history is not estimated.
