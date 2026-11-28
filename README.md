@@ -94,3 +94,9 @@ Recent Form: scoped CSS redesign, centered compact content, existing panel grid 
 ## V66
 Public /changelog page with selected release history and navigation link. Update releases in app/changelog/page.js for future versions. No API or database changes.
 V67: Comparison, database status, cached profile preview, mobile navigation, compact mode, error pages and UI polish. API status indicates configuration only.
+
+## V68
+Removed public status page, navigation link and dedicated status endpoint. Existing database and caching functionality unchanged.
+
+## V69
+Removed compact mode toggle, stored preference handling and associated CSS. Default layout retained.
