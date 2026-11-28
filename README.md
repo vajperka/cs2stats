@@ -69,3 +69,6 @@ WOK is the primary historical ELO source. Neon stores WOK values permanently in 
 
 ## V55
 Shared Player DNA-style section headings across profile, analytics and Friends League. No changes to WOK, Neon or ELO logic.
+
+## V57 – persistent API cache
+FACEIT profile, stats, history, match details, scoreboard, teammates, live and league lookups use Neon JSON cache. Successful responses only; stale responses are used on upstream failure. Rolling match records are archived individually. WOK retains its existing per-match persistent ELO store. League rejects stale upstream data for score updates; cron does not observe cached snapshots. Live fallback is historical, not guaranteed live. Existing database tables are retained. No new environment variables. Previously unseen data cannot be restored during an outage. Browser-local preferences remain local. Database quota and backup policy still apply.
