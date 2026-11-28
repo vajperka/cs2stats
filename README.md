@@ -75,3 +75,6 @@ FACEIT profile, stats, history, match details, scoreboard, teammates, live and l
 
 ## V58
 Match Timeline validates explicit round histories against final scores; unavailable if source lacks individual rounds. Existing API cache stores source responses in Neon. No demo parser included.
+
+## V59
+Redesigned metric cards: lifetime totals, real five-match rolling trends, last 10 vs previous 10 changes; no invented history. Match count chart represents available history only.
