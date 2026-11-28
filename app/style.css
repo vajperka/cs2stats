@@ -194,3 +194,7 @@ html, body, * { scrollbar-width: none !important; -ms-overflow-style: none; }
 .rankprogress39-bar{height:7px;background:#ffffff18;border-radius:20px;overflow:hidden}.rankprogress39-bar i{display:block;height:100%;border-radius:20px;transition:width .65s ease;animation:rankprogress39-in .7s ease both;transform-origin:left}
 @keyframes rankprogress39-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media(prefers-reduced-motion:reduce){.rankprogress39-bar i{animation:none;transition:none}}
+
+/* V40: compact current FACEIT badges, scoped to profile and rank overview */
+.rank > .rankfx-large,.rankcurrent > .rankfx-large{width:88px;height:88px;min-width:88px;max-width:88px;flex:0 0 88px;aspect-ratio:1;}
+@media(max-width:600px){.rank > .rankfx-large,.rankcurrent > .rankfx-large{width:68px;height:68px;min-width:68px;max-width:68px;flex-basis:68px;}}
