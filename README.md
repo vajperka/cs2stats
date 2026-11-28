@@ -63,3 +63,6 @@ Removed the unavailable weapons statistics panel from the player overview.
 
 ## V47
 Redesign historie zápasů; zachovává všechny dostupné řádky a stávající zdroj dat.
+
+## V54
+WOK is the primary historical ELO source. Neon stores WOK values permanently in frag_wok_history; refresh attempts are limited to once per player per 10 minutes when match data is missing. No estimated +/-25 values. Existing tracking tables are retained.
