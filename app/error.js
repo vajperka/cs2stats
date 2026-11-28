@@ -1,0 +1,1 @@
+'use client';export default function ErrorPage({reset}){return <main className="v67-page v67-panel"><h1>Něco se nepodařilo</h1><p>Zkus stránku načíst znovu.</p><button onClick={reset}>Opakovat</button> <a href="/">Domů</a></main>}

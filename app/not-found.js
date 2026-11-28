@@ -1,0 +1,1 @@
+import {Header} from './ui';export default function NotFound(){return <><Header/><main className="v67-page v67-panel"><h1>404 / Stránka nenalezena</h1><p>Tato stránka není dostupná.</p><a href="/">Zpět na hlavní stránku</a></main></>}

@@ -1,6 +1,7 @@
 import {Header} from '../ui';
 export const metadata={title:'Changelog | FRAG//INDEX',description:'Historie aktualizací FRAG//INDEX'};
 const releases=[
+[67,"Player Comparison & UI · 28. 11. 2026",[["new","Porovnání hráčů, stav databáze a náhled uloženého profilu."],["ui","Mobilní menu, kompaktní režim, částice, návrat nahoru a chybové stránky."]]],
 [66,'Changelog',[['new','Samostatná stránka s historií aktualizací a odkazem v navigaci.']]],
 [65,'Recent Form',[['fix','Zarovnání hlavičky k hornímu okraji panelu.']]],
 [64,'Kompaktní přehled',[['fix','Zmenšení výšky karet souhrnu výkonu.']]],

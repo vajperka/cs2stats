@@ -1,1 +1,1 @@
-import './style.css'; export const metadata={title:'FRAG//INDEX | FACEIT statistiky',description:'Statistiky CS2 hráčů na FACEIT'}; export default function Layout({children}){return <html lang="cs"><body>{children}</body></html>}
+import Enhancements from './enhancements';import './style.css'; export const metadata={title:'FRAG//INDEX | FACEIT statistiky',description:'Statistiky CS2 hráčů na FACEIT'}; export default function Layout({children}){return <html lang="cs"><body>{children}<Enhancements/></body></html>}

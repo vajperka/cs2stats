@@ -1,0 +1,3 @@
+import {db} from '../../lib/elo';import {NextResponse} from 'next/server';
+export const dynamic='force-dynamic';
+export async function GET(req){const nick=new URL(req.url).searchParams.get('nick')?.trim();if(!nick||nick.length>64)return NextResponse.json({}, {status:400});try{const sql=db();const [row]=await sql`SELECT payload,saved_at FROM frag_api_cache WHERE lower(cache_key)=lower(${'https://open.faceit.com/data/v4/players?nickname='+encodeURIComponent(nick)}) LIMIT 1`;if(!row)return NextResponse.json({}, {status:404});const p=row.payload;return NextResponse.json({nickname:p.nickname,avatar:p.avatar,elo:p.games?.cs2?.faceit_elo,level:p.games?.cs2?.skill_level,savedAt:row.saved_at});}catch{return NextResponse.json({}, {status:503})}}
