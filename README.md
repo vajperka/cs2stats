@@ -57,3 +57,6 @@ V41: Recent Form – green wins, red losses, consistent tile sizing.
 
 ## V44
 Redesigned profile map performance sidebar; existing MapArt images retained. Overall winrate weighted by match count.
+
+## V45
+Removed the unavailable weapons statistics panel from the player overview.
