@@ -1,5 +1,5 @@
 'use client';
-import {useState} from 'react'; import {useRouter} from 'next/navigation';
+import {useState} from 'react'; import Link from 'next/link'; import {useRouter} from 'next/navigation';
 export function Logo(){return <span className="brand"><svg viewBox="0 0 100 80" aria-hidden="true"><path fill="#ff1728" d="M0 0H100L79 19H30L43 31H68L49 49H38L10 80L28 36Z"/></svg><b>FRAG<span>//INDEX</span></b></span>}
-export function Header(){return <header><a href="/"><Logo/></a><nav><a href="/">⌂ Domů</a><a href="/profile/demo">▥ Ukázka statistik</a><a href="/league">♜ Friends League</a><a href="/#about">O projektu</a></nav><small>CS2 <em>+ FACEIT</em></small></header>}
+export function Header(){return <header><Link href="/"><Logo/></Link><nav><Link href="/">⌂ Domů</Link><Link href="/profile/demo">▥ Ukázka statistik</Link><Link href="/league">♜ Friends League</Link><Link href="/#about">O projektu</Link></nav><small>CS2 <em>+ FACEIT</em></small></header>}
 export function Search(){const [nick,S]=useState(''),[busy,B]=useState(false);const r=useRouter();return <><form className="search" onSubmit={e=>{e.preventDefault();if(!nick.trim()||busy)return;B(true);r.push('/profile/'+encodeURIComponent(nick.trim()))}}><span>⌕</span><input aria-label="FACEIT jméno" placeholder="Zadej FACEIT jméno hráče..." value={nick} onChange={e=>S(e.target.value)} required/><button disabled={busy}>{busy?'Načítám…':'Vyhledat →'}</button></form></>}

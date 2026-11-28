@@ -81,3 +81,6 @@ Redesigned metric cards: lifetime totals, real five-match rolling trends, last 1
 
 ## V60
 Landing background replaced with wide artwork and responsive gradient blending.
+
+## V61
+Profile loading screen, indeterminate progress, animated metric counters, reduced-motion support, navigation links, skeletons, visual polish and locally observed rank-up notifications. No API or database changes. Loading labels describe requested data, not independently measured phases.
