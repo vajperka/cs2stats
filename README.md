@@ -115,3 +115,6 @@ Match history displays observed FACEIT ELO and adjacent-match snapshot differenc
 
 ## V74
 Enable Match Created alongside Match Finished in the existing FACEIT subscription. The same callback and secret apply. New paired observations use a separate table; existing data remains. Finish retries at approximately 0, 8 and 20 seconds within the function budget. No exact delta is claimed if the baseline is absent, the latest matches disagree, or ELO has not changed. Paired observations are not authoritative FACEIT per-match deltas. Live deployment and event payloads require testing.
+
+## V75 – Background Worker
+Cloudflare Worker je v `worker/`. V terminálu v této složce spusť `npx wrangler login`, `npx wrangler deploy` a `npx wrangler secret put CRON_SECRET`. Zadej stejnou hodnotu jako ve Vercelu (nikdy do souboru). Worker volá chráněné API každých 5 minut, maximálně 10 hráčů v dávce. Denní Vercel cron zůstává jako záloha. Kontroluj Cloudflare logs a Vercel logs. Při 100 hráčích trvá oběh přibližně 50 minut. Dva FACEIT požadavky na hráče, maximálně 5760 denně při plných dávkách; ověř limity svého účtu. Snímky nejsou potvrzené změny konkrétního zápasu. Worker nevyžaduje vlastní databázový ani FACEIT klíč. V případě chyb nebo limitů změň cron na */15 * * * * a znovu nasaď. Worker není automaticky nasazen spolu s webem.

@@ -1,0 +1,5 @@
+name = "frag-index-collector"
+main = "index.mjs"
+compatibility_date = "2026-11-28"
+[triggers]
+crons = ["*/5 * * * *"]
