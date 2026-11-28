@@ -198,3 +198,8 @@ html, body, * { scrollbar-width: none !important; -ms-overflow-style: none; }
 /* V40: compact current FACEIT badges, scoped to profile and rank overview */
 .rank > .rankfx-large,.rankcurrent > .rankfx-large{width:88px;height:88px;min-width:88px;max-width:88px;flex:0 0 88px;aspect-ratio:1;}
 @media(max-width:600px){.rank > .rankfx-large,.rankcurrent > .rankfx-large{width:68px;height:68px;min-width:68px;max-width:68px;flex-basis:68px;}}
+
+/* V41: consistent recent-form result tiles */
+.form24 > span {display:inline-flex;align-items:center;justify-content:center;min-width:32px;min-height:36px;box-sizing:border-box;font-size:14px;line-height:1;padding:8px;}
+.form24 > span.gain {color:#65e79a;background:#65e79a14;}
+.form24 > span.loss {color:#ff7078;background:#ff707814;}
