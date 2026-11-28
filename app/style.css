@@ -274,3 +274,17 @@ html, body, * { scrollbar-width: none !important; -ms-overflow-style: none; }
 .match-history .history-heading{padding:16px 10px 14px}.mp-head{padding:18px 14px 14px}.history-heading .fi-unified-heading,.mp-head .fi-unified-heading,.mate-head .fi-unified-heading,.leaguepanelhead .fi-unified-heading,.champion-room>header .fi-unified-heading{border:0;padding:0;margin:0}
 .frag51 .fi-unified-heading{position:relative;z-index:1}.leaguejoin>.fi-unified-heading{border:0;margin:0;padding:0}
 @media(max-width:600px){.fi-unified-heading{gap:10px}.fi-unified-heading>svg{width:26px;height:26px}.history-heading .history-count{font-size:10px}.mp-head{flex-wrap:wrap}}
+
+/* V56: compact consistent section headings, aligned at the top */
+.fi-unified-heading{gap:12px;padding-bottom:12px;margin-bottom:12px;align-items:center}
+.fi-unified-heading>svg{width:26px;height:26px}
+.fi-unified-heading>div>small{font-size:11px;font-weight:750;letter-spacing:.12em;line-height:1.35;margin:0 0 3px}
+.fi-unified-heading>div>h3{font-size:20px;font-weight:750;line-height:1.2;margin:0 0 4px;overflow-wrap:anywhere}
+.fi-unified-heading>div>p{font-size:12px;line-height:1.4;margin:0}
+.extra24>.dna43,.extra24>.recent42{justify-content:flex-start;gap:16px}
+.extra24>.dna43>.fi-unified-heading,.recent42-head>.fi-unified-heading{flex:0 1 auto;margin:0;padding:0;border:0}
+.recent42-head{padding-bottom:12px;border-bottom:1px solid #ffffff12;align-items:center;gap:12px}
+.recent42-results{border-top:0;padding-top:4px}
+.dna43-body{flex:1}
+.recent42-stats{margin-top:auto}
+@media(max-width:600px){.fi-unified-heading>div>h3{font-size:18px}.fi-unified-heading>div>small{font-size:10px}.fi-unified-heading>svg{width:24px;height:24px}}
