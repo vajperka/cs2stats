@@ -112,3 +112,6 @@ Unified ELO graph, consecutive duplicate display suppression, observed changes l
 
 ## V73
 Match history displays observed FACEIT ELO and adjacent-match snapshot differences with an asterisk. WOK values retain priority. Missing history is not estimated.
+
+## V74
+Enable Match Created alongside Match Finished in the existing FACEIT subscription. The same callback and secret apply. New paired observations use a separate table; existing data remains. Finish retries at approximately 0, 8 and 20 seconds within the function budget. No exact delta is claimed if the baseline is absent, the latest matches disagree, or ELO has not changed. Paired observations are not authoritative FACEIT per-match deltas. Live deployment and event payloads require testing.
