@@ -87,3 +87,6 @@ Profile loading screen, indeterminate progress, animated metric counters, reduce
 
 ## V62
 Souhrn výkonu: čtyři kompaktní karty, SVG ikony, minigrafy z historie a změny posledních 10 proti předchozím 10 zápasům. Bez dalších API požadavků. Graf zápasů zobrazuje kumulativní počet dostupných zápasů. Procentní změny jsou procentní body.
+
+## V63
+Recent Form: scoped CSS redesign, centered compact content, existing panel grid dimensions and statistics preserved.
