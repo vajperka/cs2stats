@@ -84,3 +84,6 @@ Landing background replaced with wide artwork and responsive gradient blending.
 
 ## V61
 Profile loading screen, indeterminate progress, animated metric counters, reduced-motion support, navigation links, skeletons, visual polish and locally observed rank-up notifications. No API or database changes. Loading labels describe requested data, not independently measured phases.
+
+## V62
+Souhrn výkonu: čtyři kompaktní karty, SVG ikony, minigrafy z historie a změny posledních 10 proti předchozím 10 zápasům. Bez dalších API požadavků. Graf zápasů zobrazuje kumulativní počet dostupných zápasů. Procentní změny jsou procentní body.
