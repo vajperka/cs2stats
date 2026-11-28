@@ -54,3 +54,6 @@ Redesigned landing only: responsive hero, existing operator artwork, feature car
 V31: Compact Match Room next to ELO History; responsive single column on smaller screens.
 
 V41: Recent Form – green wins, red losses, consistent tile sizing.
+
+## V44
+Redesigned profile map performance sidebar; existing MapArt images retained. Overall winrate weighted by match count.
