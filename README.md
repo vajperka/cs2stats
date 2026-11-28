@@ -118,3 +118,6 @@ Enable Match Created alongside Match Finished in the existing FACEIT subscriptio
 
 ## V75 – Background Worker
 Cloudflare Worker je v `worker/`. V terminálu v této složce spusť `npx wrangler login`, `npx wrangler deploy` a `npx wrangler secret put CRON_SECRET`. Zadej stejnou hodnotu jako ve Vercelu (nikdy do souboru). Worker volá chráněné API každých 5 minut, maximálně 10 hráčů v dávce. Denní Vercel cron zůstává jako záloha. Kontroluj Cloudflare logs a Vercel logs. Při 100 hráčích trvá oběh přibližně 50 minut. Dva FACEIT požadavky na hráče, maximálně 5760 denně při plných dávkách; ověř limity svého účtu. Snímky nejsou potvrzené změny konkrétního zápasu. Worker nevyžaduje vlastní databázový ani FACEIT klíč. V případě chyb nebo limitů změň cron na */15 * * * * a znovu nasaď. Worker není automaticky nasazen spolu s webem.
+
+## V76
+FACEIT history first, WOK fallback, stored exact ELO. Initial import up to five pages; subsequent refresh latest page every ten minutes. Diagnostic: /api/faceit-history-test?id=PLAYER_ID. HTTP 403 means direct access unavailable; existing collection remains unchanged.

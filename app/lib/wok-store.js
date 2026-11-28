@@ -1,26 +1,11 @@
 import {db} from './elo';
 import wok from './wok.cjs';
-export async function enrichStored(id, rows){
- let sql, saved=[], claimed=false, warning=null;
- try{
-  sql=db();
-  await sql`CREATE TABLE IF NOT EXISTS frag_wok_history (player_id text NOT NULL, match_id text NOT NULL, elo integer, delta integer, saved_at timestamptz DEFAULT now(), PRIMARY KEY(player_id,match_id))`;
-  await sql`CREATE TABLE IF NOT EXISTS frag_wok_refresh (player_id text PRIMARY KEY, attempted_at timestamptz NOT NULL)`;
-  saved=await sql`SELECT match_id,elo,delta FROM frag_wok_history WHERE player_id=${id}`;
-  wok.merge(rows,saved.map(r=>({...r,elo_delta:r.delta})));
-  if(rows.some(r=>r.match_id&&(r.detail?.elo==null||r.detail?.delta==null))){
-   const lock=await sql`INSERT INTO frag_wok_refresh(player_id,attempted_at) VALUES(${id},now()) ON CONFLICT(player_id) DO UPDATE SET attempted_at=now() WHERE frag_wok_refresh.attempted_at < now()-interval '10 minutes' RETURNING player_id`;
-   claimed=lock.length>0;
-  }
- }catch(e){warning='Ukládání ELO do databáze není dostupné.'; console.error('WOK storage',e.code||e.name); claimed=true;}
- let source={message:null};
- if(claimed){
-  source=await wok.enrich(id,rows);
-  if(sql&&source.items?.length){try{
-   const valid=source.items.filter(x=>x.match_id&&(Number.isInteger(x.elo)||Number.isInteger(x.delta)));
-   await sql`INSERT INTO frag_wok_history(player_id,match_id,elo,delta) SELECT ${id},x.match_id,x.elo,x.delta FROM jsonb_to_recordset(${JSON.stringify(valid)}::jsonb) AS x(match_id text,elo integer,delta integer) ON CONFLICT(player_id,match_id) DO UPDATE SET elo=COALESCE(excluded.elo,frag_wok_history.elo),delta=COALESCE(excluded.delta,frag_wok_history.delta),saved_at=now()`;
-  }catch(e){warning='Nová ELO data se nepodařilo uložit.';console.error('WOK save',e.code||e.name);}}
- }
- const matched=rows.filter(r=>r.detail?.elo!=null||r.detail?.delta!=null).length;
- return {matched,message:warning||(!matched?source.message:null),cached:saved.length};
+import faceit from './faceit-history.cjs';
+export async function enrichStored(id,rows,{fallback=true}={}){
+ let sql,saved=[],claimed=false,warning=null,faceitStatus=null;
+ try{sql=db();await sql`CREATE TABLE IF NOT EXISTS frag_wok_history (player_id text NOT NULL, match_id text NOT NULL, elo integer, delta integer, saved_at timestamptz DEFAULT now(), PRIMARY KEY(player_id,match_id))`;await sql`ALTER TABLE frag_wok_history ADD COLUMN IF NOT EXISTS match_date bigint`;await sql`ALTER TABLE frag_wok_history ADD COLUMN IF NOT EXISTS source text`;await sql`CREATE TABLE IF NOT EXISTS frag_wok_refresh (player_id text PRIMARY KEY, attempted_at timestamptz NOT NULL)`;saved=await sql`SELECT match_id,elo,delta,match_date,source FROM frag_wok_history WHERE player_id=${id}`;wok.merge(rows,saved.map(r=>({...r,elo_delta:r.delta})));const lock=await sql`INSERT INTO frag_wok_refresh(player_id,attempted_at) VALUES(${id},now()) ON CONFLICT(player_id) DO UPDATE SET attempted_at=now() WHERE frag_wok_refresh.attempted_at < now()-interval '10 minutes' RETURNING player_id`;claimed=lock.length>0;}catch(e){warning='Databáze ELO není dostupná.';console.error('ELO storage',e.code||e.name);}
+ const all=new Map(saved.map(x=>[x.match_id,x]));
+ async function persist(items,source){const valid=items.filter(x=>x.match_id&&(Number.isInteger(x.elo)||Number.isInteger(x.delta)));for(const x of valid){const old=all.get(x.match_id)||{};if(old.source==='faceit'&&source!=='faceit')continue;all.set(x.match_id,{...old,...x,elo:x.elo??old.elo,delta:x.delta??old.delta,match_date:x.date??old.match_date,source});}if(!sql||!valid.length)return;try{await sql`INSERT INTO frag_wok_history(player_id,match_id,elo,delta,match_date,source) SELECT ${id},x.match_id,x.elo,x.delta,x.date,${source} FROM jsonb_to_recordset(${JSON.stringify(valid)}::jsonb) AS x(match_id text,elo integer,delta integer,date bigint) ON CONFLICT(player_id,match_id) DO UPDATE SET elo=COALESCE(excluded.elo,frag_wok_history.elo),delta=COALESCE(excluded.delta,frag_wok_history.delta),match_date=COALESCE(excluded.match_date,frag_wok_history.match_date),source=excluded.source,saved_at=now() WHERE frag_wok_history.source IS DISTINCT FROM 'faceit' OR excluded.source='faceit'`;}catch(e){warning='Nová ELO data se nepodařilo uložit.';console.error('ELO save',e.code||e.name);}}
+ let message=null;if(claimed){const direct=await faceit.fetchHistory(id,{pages:saved.some(x=>x.source==='faceit')?1:5});faceitStatus=direct.status;await persist(direct.items,'faceit');wok.merge(rows,[...all.values()].map(x=>({...x,elo_delta:x.delta})));if(fallback&&rows.some(r=>r.match_id&&(r.detail?.elo==null||r.detail?.delta==null))){const result=await wok.enrich(id,rows);message=result.message;await persist(result.items||[],'wok');}}
+ wok.merge(rows,[...all.values()].map(x=>({...x,elo_delta:x.delta})));const matched=rows.filter(r=>r.detail?.elo!=null||r.detail?.delta!=null).length;return {matched,message:warning||(!matched?message:null),cached:saved.length,faceitStatus,history:[...all.values()].filter(x=>x.match_date&&x.elo>0).sort((a,b)=>Number(a.match_date)-Number(b.match_date)).map(x=>({elo:x.elo,change:x.delta,date:Number(x.match_date),source:x.source==='faceit'?'FACEIT':'WOK'}))};
 }
