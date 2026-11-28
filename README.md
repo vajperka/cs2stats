@@ -90,3 +90,6 @@ Souhrn výkonu: čtyři kompaktní karty, SVG ikony, minigrafy z historie a změ
 
 ## V63
 Recent Form: scoped CSS redesign, centered compact content, existing panel grid dimensions and statistics preserved.
+
+## V66
+Public /changelog page with selected release history and navigation link. Update releases in app/changelog/page.js for future versions. No API or database changes.
