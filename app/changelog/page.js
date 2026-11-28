@@ -1,6 +1,7 @@
 import {Header} from '../ui';
 export const metadata={title:'Changelog | FRAG//INDEX',description:'Historie aktualizací FRAG//INDEX'};
 const releases=[
+[70,"FRAG Data Engine · 28. 11. 2026",[["new","Samostatný archiv skutečných ELO snímků z FACEIT."],["ui","Chráněný sběr na pozadí bez spotřeby WOK tokenů; WOK historie zachována."]]],
 [69,"Jednotné rozhraní · 28. 11. 2026",[["ui","Odstranění přepínače kompaktního a rozšířeného režimu. Zachováno výchozí rozložení webu."]]],
 [68,"Zjednodušení navigace · 28. 11. 2026",[["ui","Odstranění stránky Stav systému, jejího odkazu v navigaci a samostatného stavového API. Ostatní funkce zůstávají zachovány."]]],
 [67,"Player Comparison & UI · 28. 11. 2026",[["new","Porovnání hráčů, stav databáze a náhled uloženého profilu."],["ui","Mobilní menu, kompaktní režim, částice, návrat nahoru a chybové stránky."]]],

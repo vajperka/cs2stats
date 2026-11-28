@@ -100,3 +100,6 @@ Removed public status page, navigation link and dedicated status endpoint. Exist
 
 ## V69
 Removed compact mode toggle, stored preference handling and associated CSS. Default layout retained.
+
+## V70 – FRAG Data Engine
+Fresh profile requests record actual FACEIT ELO snapshots in the additive `frag_elo_samples` table. Existing WOK and Neon history is preserved. GET `/api/v1/elo?id=FACEIT_PLAYER_ID` returns up to 500 observed snapshots (not guaranteed per-match ELO). Existing profile charts retain their previous data pipeline. The protected `/api/cron` endpoint collects five oldest tracked players per invocation without WOK. Set `CRON_SECRET` in Vercel and call with `Authorization: Bearer <secret>` from a trusted scheduler. No automatic schedule is configured; profile visits collect automatically. Do not interpret differences across multiple matches as individual match changes. Rollback: redeploy V69; no database deletion required.
