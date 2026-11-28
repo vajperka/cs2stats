@@ -60,3 +60,6 @@ Redesigned profile map performance sidebar; existing MapArt images retained. Ove
 
 ## V45
 Removed the unavailable weapons statistics panel from the player overview.
+
+## V47
+Redesign historie zápasů; zachovává všechny dostupné řádky a stávající zdroj dat.
