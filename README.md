@@ -78,3 +78,6 @@ Match Timeline validates explicit round histories against final scores; unavaila
 
 ## V59
 Redesigned metric cards: lifetime totals, real five-match rolling trends, last 10 vs previous 10 changes; no invented history. Match count chart represents available history only.
+
+## V60
+Landing background replaced with wide artwork and responsive gradient blending.
